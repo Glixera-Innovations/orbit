@@ -13,15 +13,14 @@ export default async function handler(
     const envClientId = process.env.ROBLOX_CLIENT_ID;
     const envClientSecret = process.env.ROBLOX_CLIENT_SECRET;
     const envRedirectUri = process.env.ROBLOX_REDIRECT_URI;
-    const hasEnvCredentials = !!(envClientId && envClientSecret && envRedirectUri);
+    const hasEnvCredentials = !!(envClientId && envClientSecret);
 
     if (hasEnvCredentials) {
       return res.json({
-        available: envClientId.length > 0 && envClientSecret.length > 0 && envRedirectUri.length > 0 ,
+        available: envClientId.length > 0 && envClientSecret.length > 0,
         configured: {
           clientId: true,
           clientSecret: true,
-          redirectUri: true,
         },
         usingEnvVars: true,
       });
